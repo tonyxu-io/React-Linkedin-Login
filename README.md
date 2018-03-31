@@ -27,6 +27,28 @@ Install dependencies for server
 cd server
 npm install
 ```
+### Get Linkedin App Credential from Linkedin Developer Portal
+
+- client_id
+- client_secret
+
+Configure 'http://localhost:3001/callback' as Oauth2.0 redirect uri
+
+### Create Environment Variables
+
+/React-Linkedin-Login/.env
+
+```shell
+REACT_APP_CLIENT_ID=${Your-Client-ID}
+REACT_APP_REDIRECT_URI=http://localhost:3001/callback
+```
+/React-Linkedin-Login/server/.env
+
+```shell
+EXPRESS_APP_CLIENT_ID=${Your-Client-ID}
+EXPRESS_APP_CLIENT_SECRET=${Your-Client-Secret}
+EXPRESS_APP_REDIRECT_URI=http://localhost:3001/callback
+```
 
 ### Start Client
 
