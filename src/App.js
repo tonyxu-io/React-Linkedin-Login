@@ -4,6 +4,8 @@ import ProfileCard from './components/ProfileCard';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import brands from '@fortawesome/fontawesome-free-brands'
 
 var IN = null
 
@@ -115,6 +117,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">React Linkedin Login</h1>
           <p className="App-intro">A demo page for Linkedin login</p>
+          <FontAwesomeIcon icon={["fab", "github"]}/> <a href="https://github.com/yihan-us/React-Linkedin-Login" className="github-link">yihan-us/React-Linkedin-Login</a>
           <Alert/>
         </header>
         <div className="App-body">

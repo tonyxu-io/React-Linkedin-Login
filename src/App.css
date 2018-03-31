@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
+  height: 120px;
   padding: 20px;
   color: white;
 }
@@ -34,6 +34,11 @@
   width: 500px;
   margin: 20px auto;
   padding: 10px;
+}
+
+.github-link {
+  color: white;
+  font-size: 12px;
 }
 
 /* On mouse-over, add a deeper shadow */
