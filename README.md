@@ -35,12 +35,12 @@ npm build
 
 ## Consumed SDK/API
 
-### [Javascript SDK](https://developer.linkedin.com/docs/getting-started-js-sdk)
+### [Linkedin Javascript SDK](https://developer.linkedin.com/docs/getting-started-js-sdk)
 
 * Request authorization for a user
 * Log the user out
 
-### [REST API](https://developer.linkedin.com/docs/rest-api)
+### [Linkedin REST API](https://developer.linkedin.com/docs/rest-api)
 
 * Requesting data from the APIs
 * Share on Linkedin
