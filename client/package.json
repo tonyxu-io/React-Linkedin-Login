@@ -19,6 +19,7 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "8.9.4",
+    "yarn": "1.4.0"
   }
 }
