@@ -16,5 +16,8 @@
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
     "superagent": "^3.8.2"
+  },
+  "engines": {
+    "node": "8.9.4"
   }
 }
