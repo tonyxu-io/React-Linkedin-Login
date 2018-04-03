@@ -6,6 +6,10 @@ A simple app to demo Linkedin login
 
 ![React Linkedin Login Screenshot](https://github.com/yihan-us/storage/blob/master/React-Linkedin-Login.png?raw=true)
 
+## Demo
+
+http://linkedin-login-react.herokuapp.com
+
 ## Usage
 
 ### Clone
@@ -64,7 +68,7 @@ yarn run build
 /React-Linkedin-Login/:
 
 ```shell
-npm start
+PORT=3001 npm start
 ```
 
 ## Consumed SDK/API
