@@ -4,7 +4,7 @@ A simple app to demo Linkedin login
 
 ## Screenshot
 
-![React Linkedin Login Screenshot](https://github.com/yihan-us/storage/blob/master/React-Linkedin-Login.png?raw=true)
+![React Linkedin Login Screenshot](https://github.com/tonyxu-io/storage/blob/master/React-Linkedin-Login.png?raw=true)
 
 ## Demo
 
@@ -15,7 +15,7 @@ http://linkedin-login-react.herokuapp.com
 ### Clone
 
 ```shell
-git clone https://github.com/yihan-us/React-Linkedin-Login.git
+git clone https://github.com/tonyxu-io/React-Linkedin-Login.git
 ```
 
 ### Install Dependencies
