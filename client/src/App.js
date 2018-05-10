@@ -158,7 +158,7 @@ class App extends Component {
           <p className="App-intro">A demo page for Linkedin login</p>
           <FontAwesomeIcon icon={["fab", "github"]} />{" "}
           <a
-            href="https://github.com/yihan-us/React-Linkedin-Login"
+            href="https://github.com/tonyxu-io/React-Linkedin-Login"
             className="github-link"
           >
             yihan-us/React-Linkedin-Login
