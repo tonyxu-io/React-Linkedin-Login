@@ -73,6 +73,7 @@ class App extends Component {
   };
 
   updateLinkedinProfile = profile => {
+    console.log(profile)
     this.setState({
       firstName: profile.firstName,
       headline: profile.headline,
@@ -105,7 +106,7 @@ class App extends Component {
   onShareSuccess = data => {
     console.log(data);
     Alert.success(
-      `<div style="text-align:left"><p>You shared on Linkedin Successfully!<p><br/><a href=${
+      `<div style="text-align:left"><p>You shared on Linkedin Successfully!<p><br/><a href=//${
         data.updateUrl
       } target="_blank">Open</a></div>`,
       {
@@ -161,7 +162,7 @@ class App extends Component {
             href="https://github.com/tonyxu-io/React-Linkedin-Login"
             className="github-link"
           >
-            yihan-us/React-Linkedin-Login
+            tonyxu-io/React-Linkedin-Login
           </a>
           <Alert />
         </header>
@@ -178,7 +179,7 @@ class App extends Component {
             Request OAuth2.0 Token
           </button>
           {this.state.isAuthorized &&
-            this.state.summary && (
+            (
               <ProfileCard
                 firstName={this.state.firstName}
                 headline={this.state.headline}
