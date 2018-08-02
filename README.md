@@ -8,7 +8,7 @@ A simple app to demo Linkedin login
 
 ## Demo
 
-http://linkedin-login-react.herokuapp.com
+http://linkedin-login-react.herokuapp.com (Please be prepared to wait for 30 seconds to load as Heroku freezes inactive app)
 
 ## Usage
 
