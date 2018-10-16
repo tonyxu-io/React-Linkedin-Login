@@ -84,3 +84,7 @@ PORT=3001 npm start
 * Share on Linkedin
 * Request OAuth Code
 * Request OAuth Access Token
+
+## Disclaimer
+
+This is not an official sample app or documentation from LinkedIn.
