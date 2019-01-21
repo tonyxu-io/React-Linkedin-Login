@@ -1,10 +1,10 @@
 # React Linkedin Login
 
-A simple app to demo Linkedin login
+A simple app to demo Linkedin login using LinkedIn OAuth 2.0
 
 ## Screenshot
 
-![React Linkedin Login Screenshot](https://github.com/tonyxu-io/storage/blob/master/React-Linkedin-Login.png?raw=true)
+![React Linkedin Login Screenshot](.github/React-Linkedin-Login.png)
 
 ## Demo
 
@@ -21,16 +21,19 @@ git clone https://github.com/tonyxu-io/React-Linkedin-Login.git
 ### Install Dependencies
 
 Intall dependencies for server
+
 ```shell
 cd React-Linkedin-Login
 npm install
 ```
 
 Install dependencies for client
+
 ```shell
 cd client
 npm install
 ```
+
 ### Get Linkedin App Credential from Linkedin Developer Portal
 
 - client_id
@@ -68,19 +71,16 @@ yarn run build
 /React-Linkedin-Login/:
 
 ```shell
-PORT=3001 npm start
+npm start
 ```
 
 ## Consumed SDK/API
 
-### [Linkedin Javascript SDK](https://developer.linkedin.com/docs/getting-started-js-sdk)
+- [Linkedin OAuth 2.0 (3-Legged)](https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin/consumer/context)
+- [Sign In with LinkedIn](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin?context=linkedin/consumer/context)
 
-* Request authorization for a user
-* Log the user out
+## Changelog
 
-### [Linkedin REST API](https://developer.linkedin.com/docs/rest-api)
-
-* Requesting data from the APIs
-* Share on Linkedin
-* Request OAuth Code
-* Request OAuth Access Token
+- Jan 20, 2019: Migrated JS SDK related API usage (due to [deprecation of LinkedIn JS SDK](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)) to REST API
+- Aug 1, 2018: Removed summary check in case user doesn't have summary content
+- April 2, 2018: Created first version using JS SDK to load profile

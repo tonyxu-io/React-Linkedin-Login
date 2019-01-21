@@ -1,11 +1,12 @@
-import React, { Component } from "react";
 import "./App.css";
-import ProfileCard from "./components/ProfileCard";
-import Alert from "react-s-alert";
 import "react-s-alert/dist/s-alert-default.css";
 import "react-s-alert/dist/s-alert-css-effects/slide.css";
+
+import React, { Component } from "react";
+
+import Alert from "react-s-alert";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-import brands from "@fortawesome/fontawesome-free-brands";
+import ProfileCard from "./components/ProfileCard";
 
 var IN = null;
 
@@ -21,121 +22,40 @@ class App extends Component {
       pictureURL: null,
       location: null,
       positions: null,
-      summary: null,
-      connectionsCount: null,
+      summary: null
     };
   }
-  isLinkedinAuthorized = () => {
-    return IN.User.isAuthorized();
-  };
-  linkedinAuthorize = () => {
-    IN.User.authorize(this.onLinedInLoad());
-  };
-  updateAuthorizeStatus = () => {
-    if (IN === null) {
-      IN = window.IN;
-    }
-    if (this.isLinkedinAuthorized()) {
-      this.setState({
-        isAuthorized: true
-      });
-      this.requestLinkedinProfile();
+
+  componentDidMount() {
+    window.addEventListener('message', this.handlePostMessage);
+  }
+
+  handlePostMessage = (event) => {
+    if (event.data.type === "profile") {
+      debugger;
+      this.updateProfile(event.data.profile);
+      Alert.success(`Login successful: ${event.data.profile.localizedFirstName}`,{position:'top'});
     }
   };
-  onLinedInLoad = () => {
-    IN.Event.on(IN, "auth", this.updateAuthorizeStatus);
-  };
-  linkedinLogout = () => {
-    IN.User.logout(this.updateAuthorizeStatus);
-  };
-  componentDidMount = () => {
-    this.loadLinkedinJS();
-  };
 
-  loadLinkedinJS = () => {
-    window.updateAuthorizeStatus = this.updateAuthorizeStatus;
-    var script = window.document.createElement("script");
-    script.src = "//platform.linkedin.com/in.js";
-    script.innerHTML = `api_key:   86012cynxvvidr
-    authorize: true
-    onLoad:updateAuthorizeStatus`;
-    script.async = true;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  };
-
-  requestLinkedinProfile = () => {
-    IN.API.Raw(
-      "/people/~:(first-name,last-name,public-profile-url,location,headline,picture-url,positions,summary,num-connections)?format=json"
-    )
-      .method("GET")
-      .body()
-      .result(this.updateLinkedinProfile);
-  };
-
-  updateLinkedinProfile = profile => {
+  updateProfile = (profile) => {
     console.log(profile)
-    this.setState({
-      firstName: profile.firstName,
-      headline: profile.headline,
-      lastName: profile.lastName,
-      profileURL: profile.publicProfileUrl,
-      pictureURL: profile.pictureUrl,
-      location: profile.location.name,
-      positions: profile.positions,
-      summary: profile.summary,
-      connectionsCount: profile.numConnections
-    });
-  };
+      this.setState({
+        isAuthorized: true,
+        firstName: profile.localizedFirstName,
+        lastName: profile.localizedLastName,
+        headline: profile.headline.localized[`${profile.headline.preferredLocale.language}_${profile.headline.preferredLocale.country}`],
+        profileUrl: `https://www.linkedin.com/in/${profile.vanityName}`,
+        summary: profile.summary.localized[`${profile.summary.preferredLocale.language}_${profile.summary.preferredLocale.country}`].rawText
+      })
+  }
 
-  shareToLinkedin = () => {
-    // Build the JSON payload containing the content to be shared
-    var payload = {
-      comment: `Check out ${window.location.href} !`,
-      visibility: {
-        code: "anyone"
-      }
-    };
-
-    IN.API.Raw("/people/~/shares?format=json")
-      .method("POST")
-      .body(JSON.stringify(payload))
-      .result(this.onShareSuccess)
-      .error(this.onShareError);
-  };
-
-  onShareSuccess = data => {
-    console.log(data);
-    Alert.success(
-      `<div style="text-align:left"><p>You shared on Linkedin Successfully!<p><br/><a href=//${
-        data.updateUrl
-      } target="_blank">Open</a></div>`,
-      {
-        html: true
-      }
-    );
-  };
-
-  onShareError = error => {
-    console.log(error);
-    Alert.error("Something wrong, please try again.");
-  };
-
-  requestOAuthToken = () => {
+  requestProfile = () => {
     var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_basicprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
     var width = 450,
       height = 730,
       left = window.screen.width / 2 - width / 2,
       top = window.screen.height / 2 - height / 2;
-
-    window.addEventListener(
-      "message",
-      (event) => {
-        if (event.data.type === "access_token") {
-          Alert.success(`Access token obtained: ${event.data.access_token}`,{position:'top'});
-        }
-      },
-      false
-    );
 
     window.open(
       oauthUrl,
@@ -167,17 +87,7 @@ class App extends Component {
           <Alert />
         </header>
         <div className="App-body">
-          {this.state.isAuthorized ? (
-            <span>
-              <button onClick={this.linkedinLogout}>Linkedin Logout</button>
-              <button onClick={this.shareToLinkedin}>Share on Linkedin</button>
-            </span>
-          ) : (
-            <button onClick={this.linkedinAuthorize}>Linkedin Login</button>
-          )}
-          <button onClick={this.requestOAuthToken}>
-            Request OAuth2.0 Token
-          </button>
+          <button onClick={this.requestProfile}>Linkedin Login</button>
           {this.state.isAuthorized &&
             (
               <ProfileCard

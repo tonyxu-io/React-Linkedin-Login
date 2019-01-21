@@ -6,12 +6,11 @@
   </head>
   <body>
     <h1>Login Successful</h1>
-    <p>access_token <%= access_token %></p>
+    <p>Profile: <%= profile.localizedFirstName %></p>
   </body>
   <script>
-    var access_token = "<%= access_token  %>"
-    console.log(access_token)
-    window.opener.postMessage({'type': 'access_token', 'access_token': access_token}, '*')
+    var profile = <%- JSON.stringify(profile)  %>
+    window.opener.postMessage({'type': 'profile', 'profile': profile}, '*')
     window.close();
   </script>
 </html>

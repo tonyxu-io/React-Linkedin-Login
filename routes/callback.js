@@ -7,7 +7,14 @@ require('dotenv').config()
 router.get('/', function(req, res, next) {
   requestAccessToken(req.query.code,req.query.state)
   .then((response) => {
-    res.render('callback', { access_token: response.body.access_token});
+    requestProfile(response.body.access_token)
+    .then(response => {
+      console.log(response.body)
+      res.render('callback', { profile: response.body});
+    })
+  })
+  .catch((error) => {
+    res.send(`${error}`)
   })
 });
 
@@ -19,6 +26,11 @@ function requestAccessToken(code,state) {
     .send(`client_secret=${process.env.EXPRESS_APP_CLIENT_SECRET}`)
     .send(`code=${code}`)
     .send(`state=${state}`)
+}
+
+function requestProfile(token) {
+  return request.get('https://api.linkedin.com/v2/me')
+  .set('Authorization', `Bearer ${token}`)
 }
 
 module.exports = router;
