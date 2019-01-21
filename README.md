@@ -84,3 +84,7 @@ PORT=3001 npm start
 - Jan 20, 2019: Migrated JS SDK related API usage (due to [deprecation of LinkedIn JS SDK](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)) to REST API
 - Aug 1, 2018: Removed summary check in case user doesn't have summary content
 - April 2, 2018: Created first version using JS SDK to load profile
+
+## Disclaimer
+
+This is not an official sample app or documentation from LinkedIn. Please refer to [LinkedIn API Documentation](https://docs.microsoft.com/en-us/linkedin/) for official documentation and sample apps.
