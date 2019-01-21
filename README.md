@@ -71,7 +71,7 @@ yarn run build
 /React-Linkedin-Login/:
 
 ```shell
-npm start
+PORT=3001 npm start
 ```
 
 ## Consumed SDK/API
