@@ -8,7 +8,7 @@ A simple app to demo Linkedin login using LinkedIn OAuth 2.0
 
 ## Demo
 
-http://linkedin-login-react.herokuapp.com (Please be prepared to wait for 30 seconds to load as Heroku freezes inactive app)
+https://react-linkedin-login.appspot.com
 
 ## Usage
 

@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -18,7 +17,7 @@
     "superagent": "^3.8.2"
   },
   "engines": {
-    "node": "8.9.4",
+    "node": "^8",
     "yarn": "1.4.0"
   }
 }
