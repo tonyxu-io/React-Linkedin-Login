@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import Alert from "react-s-alert";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import ProfileCard from "./components/ProfileCard";
+import _ from 'lodash';
 
 var IN = null;
 
@@ -32,7 +33,6 @@ class App extends Component {
 
   handlePostMessage = (event) => {
     if (event.data.type === "profile") {
-      debugger;
       this.updateProfile(event.data.profile);
       Alert.success(`Login successful: ${event.data.profile.localizedFirstName}`,{position:'top'});
     }
@@ -42,11 +42,11 @@ class App extends Component {
     console.log(profile)
       this.setState({
         isAuthorized: true,
-        firstName: profile.localizedFirstName,
-        lastName: profile.localizedLastName,
-        headline: profile.headline.localized[`${profile.headline.preferredLocale.language}_${profile.headline.preferredLocale.country}`],
-        profileUrl: `https://www.linkedin.com/in/${profile.vanityName}`,
-        summary: profile.summary.localized[`${profile.summary.preferredLocale.language}_${profile.summary.preferredLocale.country}`].rawText
+        firstName: _.get(profile,'localizedFirstName',''),
+        lastName: _.get(profile,'localizedLastName',''),
+        headline: _.get(profile,'localizedHeadline',''),
+        profileURL: `https://www.linkedin.com/in/${_.get(profile,'vanityName','')}`,
+        summary: _.get(profile,'summary.localized[`${profile.summary.preferredLocale.language}_${profile.summary.preferredLocale.country}`].rawText','')
       })
   }
 
