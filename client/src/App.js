@@ -9,8 +9,6 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import ProfileCard from "./components/ProfileCard";
 import _ from 'lodash';
 
-var IN = null;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +16,8 @@ class App extends Component {
       isAuthorized: false,
       firstName: null,
       lastName: null,
-      headline: null,
       profileURL: null,
       pictureURL: null,
-      location: null,
-      positions: null,
-      summary: null
     };
   }
 
@@ -44,14 +38,13 @@ class App extends Component {
         isAuthorized: true,
         firstName: _.get(profile,'localizedFirstName',''),
         lastName: _.get(profile,'localizedLastName',''),
-        headline: _.get(profile,'localizedHeadline',''),
         profileURL: `https://www.linkedin.com/in/${_.get(profile,'vanityName','')}`,
-        summary: _.get(profile,'summary.localized[`${profile.summary.preferredLocale.language}_${profile.summary.preferredLocale.country}`].rawText','')
+        pictureURL: _.get(_.last(_.get(profile,'profilePicture.displayImage~.elements','')),'identifiers[0].identifier','')
       })
   }
 
   requestProfile = () => {
-    var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_basicprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+    var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
     var width = 450,
       height = 730,
       left = window.screen.width / 2 - width / 2,
@@ -92,14 +85,9 @@ class App extends Component {
             (
               <ProfileCard
                 firstName={this.state.firstName}
-                headline={this.state.headline}
                 lastName={this.state.lastName}
                 profileURL={this.state.profileURL}
                 pictureURL={this.state.pictureURL}
-                location={this.state.location}
-                positions={this.state.positions}
-                summary={this.state.summary}
-                connectionsCount={this.state.connectionsCount}
               />
             )}
         </div>

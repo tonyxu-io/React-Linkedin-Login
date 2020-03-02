@@ -19,9 +19,6 @@ router.get('/', function(req, res, next) {
 });
 
 function requestAccessToken(code,state) {
-  console.log('EXPRESS_APP_REDIRECT_URI:' + process.env.EXPRESS_APP_REDIRECT_URI)
-  console.log('EXPRESS_APP_CLIENT_ID:' + process.env.EXPRESS_APP_CLIENT_ID)
-  console.log('EXPRESS_APP_CLIENT_SECRET:' + process.env.EXPRESS_APP_CLIENT_SECRET)
   return request.post('https://www.linkedin.com/oauth/v2/accessToken')
     .send('grant_type=authorization_code')
     .send(`redirect_uri=${process.env.EXPRESS_APP_REDIRECT_URI}`)
@@ -32,7 +29,7 @@ function requestAccessToken(code,state) {
 }
 
 function requestProfile(token) {
-  return request.get('https://api.linkedin.com/v2/me')
+  return request.get('https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))')
   .set('Authorization', `Bearer ${token}`)
 }
 
