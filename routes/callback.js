@@ -19,6 +19,9 @@ router.get('/', function(req, res, next) {
 });
 
 function requestAccessToken(code,state) {
+  console.log('EXPRESS_APP_REDIRECT_URI:' + process.env.EXPRESS_APP_REDIRECT_URI)
+  console.log('EXPRESS_APP_CLIENT_ID:' + process.env.EXPRESS_APP_CLIENT_ID)
+  console.log('EXPRESS_APP_CLIENT_SECRET:' + process.env.EXPRESS_APP_CLIENT_SECRET)
   return request.post('https://www.linkedin.com/oauth/v2/accessToken')
     .send('grant_type=authorization_code')
     .send(`redirect_uri=${process.env.EXPRESS_APP_REDIRECT_URI}`)

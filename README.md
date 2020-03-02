@@ -1,5 +1,7 @@
 # React Linkedin Login
 
+![.github/workflows/workflow.yml](https://github.com/tonyxu-io/React-Linkedin-Login/workflows/.github/workflows/workflow.yml/badge.svg)
+
 A simple app to demo Linkedin login using LinkedIn OAuth 2.0
 
 ## Screenshot
@@ -8,7 +10,7 @@ A simple app to demo Linkedin login using LinkedIn OAuth 2.0
 
 ## Demo
 
-https://react-linkedin-login.appspot.com
+https://tonyxu-linkedin-react-app.azurewebsites.net/
 
 ## Usage
 
@@ -81,6 +83,7 @@ PORT=3001 npm start
 
 ## Changelog
 
+- Mar 1, 2020: Migrated hosting platform from GAE to Azure, and CI/CD platform from Travis CI to GitHub Actions
 - Jan 20, 2019: Migrated JS SDK related API usage (due to [deprecation of LinkedIn JS SDK](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)) to REST API
 - Aug 1, 2018: Removed summary check in case user doesn't have summary content
 - April 2, 2018: Created first version using JS SDK to load profile

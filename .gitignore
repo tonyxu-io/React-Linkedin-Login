@@ -28,3 +28,5 @@ client/build
 # Google App Engine
 google-app-engine-client-secret.json
 app.yaml
+
+.history
