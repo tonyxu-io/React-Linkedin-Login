@@ -7,11 +7,11 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.9",
     "@fortawesome/fontawesome-free-solid": "^5.0.9",
     "@fortawesome/react-fontawesome": "^0.0.18",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-s-alert": "^1.4.1",
-    "react-scripts": "1.1.1"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +23,17 @@
     "node": ">6.0.0",
     "yarn": ">1.4.0"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

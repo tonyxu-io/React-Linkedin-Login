@@ -3,7 +3,7 @@ var router = express.Router();
 const request = require('superagent');
 require('dotenv').config()
 
-/* GET users listing. */
+/* Handle LinkedIn OAuth callback and return user profile. */
 router.get('/', function(req, res, next) {
   requestAccessToken(req.query.code,req.query.state)
   .then((response) => {
@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
     })
   })
   .catch((error) => {
-    res.send(`${error}`)
+    res.status(500).send(`${error}`)
+    console.error(error)
   })
 });
 
