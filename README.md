@@ -2,7 +2,7 @@
 
 ![.github/workflows/workflow.yml](https://github.com/tonyxu-io/React-Linkedin-Login/workflows/.github/workflows/workflow.yml/badge.svg)
 
-A simple app to demo Linkedin login using LinkedIn OAuth 2.0
+A simple app to demo LinkedIn login using LinkedIn OAuth 2.0
 
 ## Screenshot
 
@@ -22,7 +22,7 @@ git clone https://github.com/tonyxu-io/React-Linkedin-Login.git
 
 ### Install Dependencies
 
-Intall dependencies for server
+Install dependencies for server
 
 ```shell
 cd React-Linkedin-Login
@@ -36,7 +36,7 @@ cd client
 npm install
 ```
 
-### Get Linkedin App Credential from Linkedin Developer Portal
+### Get LinkedIn App Credential from LinkedIn Developer Portal
 
 - client_id
 - client_secret
@@ -80,7 +80,7 @@ Visit `http://localhost:3001/` in your browser.
 
 ## Consumed SDK/API
 
-- [Linkedin OAuth 2.0 (3-Legged)](https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin/consumer/context)
+- [LinkedIn OAuth 2.0 (3-Legged)](https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin/consumer/context)
 - [Sign In with LinkedIn](https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin?context=linkedin/consumer/context)
 
 ## Changelog
