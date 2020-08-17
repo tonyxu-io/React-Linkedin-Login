@@ -76,6 +76,8 @@ yarn run build
 PORT=3001 npm start
 ```
 
+Visit `http://localhost:3001/` in your browser.
+
 ## Consumed SDK/API
 
 - [Linkedin OAuth 2.0 (3-Legged)](https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin/consumer/context)
