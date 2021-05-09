@@ -7,7 +7,7 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.9",
     "@fortawesome/fontawesome-free-solid": "^5.0.9",
     "@fortawesome/react-fontawesome": "^0.0.18",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-s-alert": "^1.4.1",
