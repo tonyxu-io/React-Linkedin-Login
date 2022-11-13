@@ -10,7 +10,7 @@ A simple app to demo LinkedIn login using LinkedIn OAuth 2.0
 
 ## Demo
 
-https://tonyxu-linkedin-react-app.azurewebsites.net/
+https://tony-linkedin-login.azurewebsites.net/
 
 ## Usage
 
