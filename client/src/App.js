@@ -9,6 +9,9 @@ import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import ProfileCard from "./components/ProfileCard";
 import _ from 'lodash';
 
+
+const client_id = "77asdfasdfa6k4geitiskdgfkah77wda46"; // put your client id here
+const redirectionURL ="http://localhost:3001/callback" 
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +31,7 @@ class App extends Component {
   handlePostMessage = (event) => {
     if (event.data.type === "profile") {
       this.updateProfile(event.data.profile);
-      Alert.success(`Login successful: ${event.data.profile.localizedFirstName}`,{position:'top'});
+      Alert.success(`Login successful: ${event.data.profile.name}`,{position:'top'});
     }
   };
 
@@ -36,32 +39,35 @@ class App extends Component {
     console.log(profile)
       this.setState({
         isAuthorized: true,
-        firstName: _.get(profile,'localizedFirstName',''),
-        lastName: _.get(profile,'localizedLastName',''),
-        profileURL: `https://www.linkedin.com/in/${_.get(profile,'vanityName','')}`,
-        pictureURL: _.get(_.last(_.get(profile,'profilePicture.displayImage~.elements','')),'identifiers[0].identifier','')
+        firstName: _.get(profile,'given_name',''),
+        lastName: _.get(profile,'family_name',''),
+        profileURL: `https://www.linkedin.com/in/${_.get(profile,'fullname','')}`,
+        pictureURL: _.get(profile,'picture','')
       })
   }
 
   requestProfile = () => {
-    var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=r_liteprofile&state=123456&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`
+   var  oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&redirect_uri=${redirectionURL}&state=123456&scope=openid%20profile%20w_member_social%20email`
+
+    // var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client_id}&scope=r_liteprofile&state=123456&redirect_uri=${redirectionURL}`
     var width = 450,
       height = 730,
       left = window.screen.width / 2 - width / 2,
       top = window.screen.height / 2 - height / 2;
 
-    window.open(
-      oauthUrl,
-      "Linkedin",
-      "menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=" +
-        width +
-        ", height=" +
-        height +
-        ", top=" +
-        top +
-        ", left=" +
-        left
-    );
+      window.open(
+        oauthUrl,
+        "Linkedin",
+        "menubar=no,location=no,resizable=no,scrollbars=no,status=no,width=" +
+          width +
+          ",height=" +
+          height +
+          ",top=" +
+          top +
+          ",left=" +
+          left
+      );
+      
   };
 
   render() {
@@ -72,10 +78,10 @@ class App extends Component {
           <p className="App-intro">A demo page for Linkedin login</p>
           <FontAwesomeIcon icon={["fab", "github"]} />{" "}
           <a
-            href="https://github.com/tonyxu-io/React-Linkedin-Login"
+            href="https://github.com/gautammali/React-Linkedin-Login"
             className="github-link"
           >
-            tonyxu-io/React-Linkedin-Login
+            gautammali/React-Linkedin-Login
           </a>
           <Alert />
         </header>

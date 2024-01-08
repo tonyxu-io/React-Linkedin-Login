@@ -3,6 +3,10 @@ var router = express.Router();
 const request = require('superagent');
 require('dotenv').config()
 
+process.env.EXPRESS_APP_REDIRECT_URI = "http://localhost:3001/callback";
+process.env.EXPRESS_APP_CLIENT_ID ="77asdfasdfa6k4geitiskdgfkah77wda46"; //put your client id here
+process.env.EXPRESS_APP_CLIENT_SECRET = "QjpY;fldskfjgdshkfasdfhaksjdVnuaRdnhvEeJ" // put your client secret here
+
 /* Handle LinkedIn OAuth callback and return user profile. */
 router.get('/', function(req, res, next) {
   requestAccessToken(req.query.code,req.query.state)
@@ -20,6 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 function requestAccessToken(code,state) {
+  // console.log("process.env ====",process.env)
   return request.post('https://www.linkedin.com/oauth/v2/accessToken')
     .send('grant_type=authorization_code')
     .send(`redirect_uri=${process.env.EXPRESS_APP_REDIRECT_URI}`)
@@ -30,7 +35,10 @@ function requestAccessToken(code,state) {
 }
 
 function requestProfile(token) {
-  return request.get('https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))')
+  // return request.get('https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))')
+  // .set('Authorization', `Bearer ${token}`)
+
+  return request.get('https://api.linkedin.com/v2/userinfo')
   .set('Authorization', `Bearer ${token}`)
 }
 
