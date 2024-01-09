@@ -1,6 +1,10 @@
 # React Linkedin Login
 
-![.github/workflows/workflow.yml](https://github.com/tonyxu-io/React-Linkedin-Login/workflows/.github/workflows/workflow.yml/badge.svg)
+> [!CAUTION]
+> This repo has been archived since the login API used by this repo has been deprecated.
+> https://www.linkedin.com/developers/news/featured-updates/openid-connect-authentication
+
+![.github/workflows/workflow.yml](https://github.com/tonyxu-io/React-Linkedin-Login/actions/workflows/workflow-push-master.yml/badge.svg)
 
 A simple app to demo LinkedIn login using LinkedIn OAuth 2.0
 
